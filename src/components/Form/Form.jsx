@@ -23,7 +23,7 @@ const Form = ({users,setUsers,mode,setMode,form,setForm}) => {
         setshowform('block')
     }
     const notshowform =()=>{
-        setshowform('none')
+      setshowform('none')
     }
   return (
     <div>
@@ -32,13 +32,14 @@ const Form = ({users,setUsers,mode,setMode,form,setForm}) => {
         <input type="text" name="email"  onChange={inputHandler}  value={form.email}/>
         <input type="text" name="phone"  onChange={inputHandler}  value={form.phone}/>
         <input type="text" name="age"  onChange={inputHandler}  value={form.age} />
-        {/* <input type="text" />
-        <input type="text" /> */}
-        <button type='submit' onClick={notshowform}>save</button>
+        <button type='submit' onClick={notshowform}>{mode}</button>
       </form>
-      <button onClick={showformHandler} >Add New</button>
+      <button onClick={showformHandler}>Add New</button>
     </div>
   );
 };
 
 export default Form;
+
+
+// ,setForm,showform,setshowform,showformHandler

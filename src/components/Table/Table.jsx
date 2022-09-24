@@ -8,11 +8,15 @@ const Table = ({ users, setusers }) => {
   const [userid, setUserid] = useState(null);
   const [dismessage, setdisMessage] = useState("none");
   const [search, setSearch] = useState("");
-  const [form,setForm] =useState({id:0,name:'',email:'',phone:'' ,age:''});
-  const [mode,setMode]=useState('add');
-  const [filter,setFilter]=useState('all');
-  
-
+  const [form, setForm] = useState({
+    id: 0,
+    name: "",
+    email: "",
+    phone: "",
+    age: "",
+  });
+  const [mode, setMode] = useState("add");
+  const [filter, setFilter] = useState("all");
 
   const checklikeHandler = (id) => {
     setusers(
@@ -26,10 +30,47 @@ const Table = ({ users, setusers }) => {
     setUserid(id);
   };
 
+  // const [showform,setshowform]=useState('none')
+
+  // const showformHandler =()=>{
+  //   setshowform('block')
+  // }
   const updateHandler = (user) => {
     setForm(user);
     setMode("update");
+    // showformHandler()
   };
+
+  // const notshowform =()=>{
+  //     setshowform('none')
+  // }
+  const [items, setitem] = useState([
+    {
+      id: 1,
+      name: "mina",
+      email: "mary@gmail.com",
+      phone: "338877",
+      age: 24,
+      favorit: true,
+    },
+    {
+      id: 2,
+      name: "saeid",
+      email: "mary@gmail.com",
+      phone: "338877",
+      age: 24,
+      favorit: false,
+    },
+    {
+      id: 3,
+      name: "paniz",
+      email: "mary@gmail.com",
+      phone: "338877",
+      age: 24,
+      favorit: true,
+    },
+  ]);
+
   return (
     <div>
       <Delete
@@ -41,8 +82,23 @@ const Table = ({ users, setusers }) => {
       />
 
       <Search setSearch={setSearch} />
-      <FilterItem filter={filter} setFilter={setFilter} users={users} setusers={setusers} />
-      <Form  dismessage={dismessage} users={users} setUsers={setusers} mode={mode} setMode={setMode} form={form} setForm={setForm} />
+      <FilterItem
+        items={items}
+        setitem={setitem}
+        filter={filter}
+        setFilter={setFilter}
+        users={users}
+        setusers={setusers}
+      />
+      <Form
+        dismessage={dismessage}
+        users={users}
+        setUsers={setusers}
+        mode={mode}
+        setMode={setMode}
+        form={form}
+        setForm={setForm}
+      />
       <div style={{ border: "2px solid black", margin: "20px" }}>
         <table style={{ padding: "10px" }}>
           <thead>
@@ -56,9 +112,9 @@ const Table = ({ users, setusers }) => {
               <th></th>
             </tr>
           </thead>
-          {users
+          {items
             .filter((item) =>
-              item.name.toUpperCase().includes(search.toUpperCase()) 
+              item.name.toUpperCase().includes(search.toUpperCase())
             )
             .map((user) => (
               <tbody>
@@ -73,7 +129,7 @@ const Table = ({ users, setusers }) => {
                   </td>
                   <td>
                     <button onClick={() => showmessage(user.id)}>delete</button>
-                    <button onClick={()=>updateHandler(user)}>update</button>
+                    <button onClick={() => updateHandler(user)}>update</button>
                   </td>
                 </tr>
               </tbody>
