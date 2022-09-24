@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import Table from "./components/Table/Table";
+import Search from "./components/Search/Search";
 
 function App() {
+  const [users, setusers] = useState([
+    {
+      id: 1,
+      name: "mina",
+      email: "mary@gmail.com",
+      phone: "338877",
+      age: 24,
+      favorit: true,
+    },
+    {
+      id: 2,
+      name: "saeid",
+      email: "mary@gmail.com",
+      phone: "338877",
+      age: 24,
+      favorit: false,
+    },
+    {
+      id: 3,
+      name: "paniz",
+      email: "mary@gmail.com",
+      phone: "338877",
+      age: 24,
+      favorit: true,
+    },
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Table users={users} setusers={setusers} />
     </div>
   );
 }
