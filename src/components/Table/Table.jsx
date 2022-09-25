@@ -3,6 +3,8 @@ import Delete from "../DeleteMessage/Delete";
 import FilterItem from "../FilterItem/Filteritem";
 import Form from "../Form/Form";
 import Search from "../Search/Search";
+import './Table.style.css'
+import Avatarimg from "../Avatarnimation/Avatar";
 
 const Table = ({ users, setusers }) => {
   const [userid, setUserid] = useState(null);
@@ -15,7 +17,7 @@ const Table = ({ users, setusers }) => {
     phone: "",
     age: "",
   });
-  const [mode, setMode] = useState("add");
+  const [mode, setMode] = useState("save");
   const [filter, setFilter] = useState("all");
 
   const checklikeHandler = (id) => {
@@ -30,11 +32,7 @@ const Table = ({ users, setusers }) => {
     setUserid(id);
   };
 
-  // const [showform,setshowform]=useState('none')
 
-  // const showformHandler =()=>{
-  //   setshowform('block')
-  // }
   const updateHandler = (user) => {
     setForm(user);
     setMode("update");
@@ -47,6 +45,8 @@ const Table = ({ users, setusers }) => {
   const [items, setitem] = useState([]);
   const tablerow =[{id:2,name:'id'},{id:1,name:'name'},{id:3,name:'email'},{id:1,name:'phone'},{id:1,name:'age'}]
 
+  const [showform, setshowform] = useState("none");
+
   return (
     <div>
       <Delete
@@ -56,7 +56,19 @@ const Table = ({ users, setusers }) => {
         users={users}
         setusers={setusers}
       />
-
+      <Avatarimg setshowform={setshowform} />
+      <Form
+        items={items}
+        setitem={setitem}
+        users={users}
+        setusers={setusers}
+        mode={mode}
+        setMode={setMode}
+        form={form}
+        setForm={setForm}
+        setshowform={setshowform}
+        showform={showform}
+      />
       <Search setSearch={setSearch} />
       <FilterItem
         setitem={setitem}
@@ -66,19 +78,9 @@ const Table = ({ users, setusers }) => {
         items={items}
         setusers={setusers}
       />
-      <Form
-        items={items}
-        setitem={setitem}
-        users={users}
-        setusers={setusers}
-        // dismessage={dismessage}
-        mode={mode}
-        setMode={setMode}
-        form={form}
-        setForm={setForm}
-      />
-      <div style={{ border: "2px solid black", margin: "20px" }}>
-        <table style={{ padding: "10px" }}>
+
+      <div className="space-item">
+        <table className='table' >
           <thead>
             <tr>
               <th>profile</th>
@@ -99,7 +101,7 @@ const Table = ({ users, setusers }) => {
             .map((user) => (
               <tbody>
                 <tr>
-                  <td>
+                  <td className="avatar-table">
                     <img src= {`https://avatars.dicebear.com/api/adventurer/:${user.id}.svg`} alt='avatar' />
                   </td>
                   {tablerow.map(row=>(<td>{user[row.name]}</td>))}
@@ -107,8 +109,8 @@ const Table = ({ users, setusers }) => {
                     {user.favorit ? <iconify-icon icon="ant-design:like-twotone" width="28" height="28"></iconify-icon> :<iconify-icon icon="ant-design:dislike-twotone" width="28" height="28"></iconify-icon>}
                   </td>
                   <td>
-                    <button onClick={() => showmessage(user.id)}>delete</button>
-                    <button onClick={() => updateHandler(user)}>update</button>
+                    <button className="button" onClick={() => showmessage(user.id)}><iconify-icon icon="fluent:delete-12-regular" width="22"></iconify-icon></button>
+                    <button className="button" onClick={() => updateHandler(user)}><iconify-icon icon="fa-regular:edit" width="24"></iconify-icon></button>
                   </td>
                 </tr>
               </tbody>

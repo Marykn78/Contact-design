@@ -1,6 +1,6 @@
-import { useState } from "react";
+import './Form.style.css' 
 
-const Form = ({ mode, setMode, form, setForm,items, setitem,users,setusers }) => {
+const Form = ({ mode, setMode, form, setForm,items, setitem,users,setusers,showform,setshowform}) => {
 
   const inputs =[{id:1,name:'name'},{id:2,name:'email'},{id:3,name:'phone'},{id:4,name:'age'}]
   const inputHandler = (e) => {
@@ -8,7 +8,7 @@ const Form = ({ mode, setMode, form, setForm,items, setitem,users,setusers }) =>
   };
   const addItem = (e) => {
     e.preventDefault();
-    if (mode === "add") {
+    if (mode === "save") {
       setusers([
         ...users,
         {
@@ -22,51 +22,24 @@ const Form = ({ mode, setMode, form, setForm,items, setitem,users,setusers }) =>
       ]);
     } else {
       setusers(users.map((item) => (item.id === form.id ? form : item)));
+      setMode("save");
     }
     setForm({ name: "", email: "", phone: "", age: "" });
-    setMode("add");
   };
 
-  const [showform, setshowform] = useState("none");
-  const showformHandler = () => {
-    setshowform("block");
-  };
+  // const [showform, setshowform] = useState("none");
   const notshowform = () => {
     setshowform("none");
   };
   return (
     <div>
       <form action="" style={{ display: showform }} onSubmit={addItem}>
-        {inputs.map(item=>(<input name={item.name} onChange={inputHandler} value={form[item.name]} />))}
-        {/* <input
-          type="text"
-          name="name"
-          onChange={inputHandler}
-          value={form.name}
-        />
-        <input
-          type="text"
-          name="email"
-          onChange={inputHandler}
-          value={form.email}
-        />
-        <input
-          type="text"
-          name="phone"
-          onChange={inputHandler}
-          value={form.phone}
-        />
-        <input
-          type="text"
-          name="age"
-          onChange={inputHandler}
-          value={form.age}
-        /> */}
-        <button type="submit" onClick={notshowform}>
+        {inputs.map(item=>(<div className="input-row"><input type="text" name={item.name} onChange={inputHandler} value={form[item.name]} placeholder={item.name} /></div>))}
+
+        <button className="button" type="submit" onClick={notshowform}>
           {mode}
         </button>
       </form>
-      <button onClick={showformHandler}>Add New</button>
     </div>
   );
 };

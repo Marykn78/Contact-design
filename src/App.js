@@ -1,32 +1,32 @@
 import "./App.css";
 import React, { useState } from "react";
 import Table from "./components/Table/Table";
-import Search from "./components/Search/Search";
+
 
 function App() {
   const [users, setusers] = useState([
     {
       id: 1,
       name: "mina",
-      email: "mary@gmail.com",
-      phone: "338877",
+      email: "mina@gmail.com",
+      phone: "308271",
       age: 24,
       favorit: true,
     },
     {
       id: 2,
       name: "saeid",
-      email: "mary@gmail.com",
-      phone: "338877",
-      age: 24,
+      email: "saeid@gmail.com",
+      phone: "564390",
+      age: 32,
       favorit: false,
     },
     {
       id: 3,
       name: "paniz",
-      email: "mary@gmail.com",
-      phone: "338877",
-      age: 24,
+      email: "paniz@gmail.com",
+      phone: "823174",
+      age: 18,
       favorit: true,
     },
   ]);

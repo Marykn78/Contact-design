@@ -1,7 +1,3 @@
-// import React, { useState } from 'react';
-
-// import { useState } from "react";
-
 const FilterItem = ({ filter, users, setitem, setFilter,items,setusers }) => {
   const filterdata = [
     { id: 1, title: "all" },
