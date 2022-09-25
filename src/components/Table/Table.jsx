@@ -44,32 +44,8 @@ const Table = ({ users, setusers }) => {
   // const notshowform =()=>{
   //     setshowform('none')
   // }
-  const [items, setitem] = useState([
-    {
-      id: 1,
-      name: "mina",
-      email: "mary@gmail.com",
-      phone: "338877",
-      age: 24,
-      favorit: true,
-    },
-    {
-      id: 2,
-      name: "saeid",
-      email: "mary@gmail.com",
-      phone: "338877",
-      age: 24,
-      favorit: false,
-    },
-    {
-      id: 3,
-      name: "paniz",
-      email: "mary@gmail.com",
-      phone: "338877",
-      age: 24,
-      favorit: true,
-    },
-  ]);
+  const [items, setitem] = useState([]);
+  const tablerow =[{id:2,name:'id'},{id:1,name:'name'},{id:3,name:'email'},{id:1,name:'phone'},{id:1,name:'age'}]
 
   return (
     <div>
@@ -83,17 +59,19 @@ const Table = ({ users, setusers }) => {
 
       <Search setSearch={setSearch} />
       <FilterItem
-        items={items}
         setitem={setitem}
         filter={filter}
         setFilter={setFilter}
         users={users}
+        items={items}
         setusers={setusers}
       />
       <Form
-        dismessage={dismessage}
+        items={items}
+        setitem={setitem}
         users={users}
-        setUsers={setusers}
+        setusers={setusers}
+        // dismessage={dismessage}
         mode={mode}
         setMode={setMode}
         form={form}
@@ -103,6 +81,7 @@ const Table = ({ users, setusers }) => {
         <table style={{ padding: "10px" }}>
           <thead>
             <tr>
+              <th>profile</th>
               <th>id</th>
               <th>name</th>
               <th>email</th>
@@ -112,20 +91,20 @@ const Table = ({ users, setusers }) => {
               <th></th>
             </tr>
           </thead>
-          {items
+
+          {users
             .filter((item) =>
               item.name.toUpperCase().includes(search.toUpperCase())
             )
             .map((user) => (
               <tbody>
                 <tr>
-                  <td>{user.id}</td>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.phone}</td>
-                  <td>{user.age}</td>
+                  <td>
+                    <img src= {`https://avatars.dicebear.com/api/adventurer/:${user.id}.svg`} alt='avatar' />
+                  </td>
+                  {tablerow.map(row=>(<td>{user[row.name]}</td>))}
                   <td onClick={() => checklikeHandler(user.id)}>
-                    {user.favorit ? "like" : "dislike"}
+                    {user.favorit ? <iconify-icon icon="ant-design:like-twotone" width="28" height="28"></iconify-icon> :<iconify-icon icon="ant-design:dislike-twotone" width="28" height="28"></iconify-icon>}
                   </td>
                   <td>
                     <button onClick={() => showmessage(user.id)}>delete</button>
