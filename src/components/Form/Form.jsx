@@ -1,8 +1,9 @@
 import './Form.style.css' 
+import image from './image/image.webp'
 
-const Form = ({ mode, setMode, form, setForm,items, setitem,users,setusers,showform,setshowform}) => {
+const Form = ({ mode, setMode, form, setForm,users,setusers,showform,setshowform}) => {
 
-  const inputs =[{id:1,name:'name'},{id:2,name:'email'},{id:3,name:'phone'},{id:4,name:'age'}]
+  const inputs =[{id:1,name:'name',type:'text'},{id:2,name:'email',type:'email'},{id:3,name:'phone',type:'text'},{id:4,name:'age',type:'number'}]
   const inputHandler = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -26,20 +27,24 @@ const Form = ({ mode, setMode, form, setForm,items, setitem,users,setusers,showf
     }
     setForm({ name: "", email: "", phone: "", age: "" });
   };
-
-  // const [showform, setshowform] = useState("none");
   const notshowform = () => {
     setshowform("none");
   };
   return (
-    <div>
-      <form action="" style={{ display: showform }} onSubmit={addItem}>
-        {inputs.map(item=>(<div className="input-row"><input type="text" name={item.name} onChange={inputHandler} value={form[item.name]} placeholder={item.name} /></div>))}
-
-        <button className="button" type="submit" onClick={notshowform}>
+    <div className='input-row'>
+      <form action="" style={{ display: showform }} onSubmit={addItem} >
+        {inputs.map(item=>(<div className="input-row"><input type={item.type} name={item.name} onChange={inputHandler} value={form[item.name]} placeholder={item.name} /></div>))}
+        <button className="button submit-btn" type="submit" onClick={notshowform}>
           {mode}
         </button>
+        {/* <div className='formimgcontainer'>
+          <img className='form-image' src={image} alt="form" />
+        </div> */}
       </form>
+
+      {/* <button className="button"  onClick={notshowform}>
+          cancle
+      </button> */}
     </div>
   );
 };

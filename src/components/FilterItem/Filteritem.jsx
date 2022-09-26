@@ -1,40 +1,44 @@
-import React, { useEffect } from 'react';
-
-const FilterItem = ({ filter, users,setFilter,setitem }) => {
+import React, { useEffect } from "react";
+import "./Filter.style.css";
+const FilterItem = ({ filter, users, setFilter, setitem }) => {
   const filterdata = [
     { id: 1, title: "all" },
     { id: 2, title: "like" },
     { id: 3, title: "dislike" },
   ];
 
-
-  const filterHandler =(title)=>{
-      setFilter(title)
-  }
-  useEffect(() => { checkFilter()}, [users, filter]);
+  const filterHandler = (title) => {
+    setFilter(title);
+  };
+  useEffect(() => {
+    checkFilter();
+  }, [users, filter]);
   const checkFilter = () => {
-    switch(filter){
-      case 'like':
-        setitem(users.filter(item=>item.favorit === true))
+    switch (filter) {
+      case "like":
+        setitem(users.filter((item) => item.favorit === true));
         break;
-      case 'dislike':
-        setitem(users.filter(item=>item.favorit === false))
+      case "dislike":
+        setitem(users.filter((item) => item.favorit === false));
         break;
       default:
-        setitem(users)
+        setitem(users);
     }
   };
 
   return (
     <div>
-      {filterdata.map((item) => (
-        <button
-          onClick= {()=>filterHandler(item.title)}
-          style={{ background: item.title === filter ? "green" : "white" }}
-        >
-          {item.title}
-        </button>
-      ))}
+      <div className="filter-container">
+        {filterdata.map((item) => (
+          <button
+            className="button"
+            onClick={() => filterHandler(item.title)}
+            style={{ background: item.title === filter ? "#90728b" : "#ddd" }}
+          >
+            {item.title}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
@@ -42,7 +46,6 @@ const FilterItem = ({ filter, users,setFilter,setitem }) => {
 export default FilterItem;
 // onClick={() => checkFilter(item)}
 // {()=>filterHandler(item.title)}
-
 
 // const checkFilter = (item) => {
 //   if(item.title === 'all'){

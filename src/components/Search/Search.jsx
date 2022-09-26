@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import './Search.style.css'
 
 const Search =({search,setSearch})=>{
     const searchHandler =(e)=>{
@@ -8,7 +7,9 @@ const Search =({search,setSearch})=>{
 
     return(
         <div>
-            <input onChange={searchHandler} value={search} placeholder={'Type here to search'} />
+            <div className='search-container'>
+                <input className='search-input' onChange={searchHandler} value={search} placeholder={'Type here to search'} />
+            </div>
         </div>
     )
 }

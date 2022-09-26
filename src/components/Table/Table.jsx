@@ -30,7 +30,7 @@ const Table = ({ users, setusers }) => {
     );
   };
   const showmessage = (id) => {
-    setdisMessage("block");
+    setdisMessage("flex");
     setUserid(id);
   };
 
@@ -59,8 +59,6 @@ const Table = ({ users, setusers }) => {
       />
       <Avatarimg setshowform={setshowform} />
       <Form
-        // items={items}
-        // setitem={setitem}
         users={users}
         setusers={setusers}
         mode={mode}
@@ -76,7 +74,6 @@ const Table = ({ users, setusers }) => {
         filter={filter}
         setFilter={setFilter}
         users={users}
-        // items={items}
         setusers={setusers}
       />
 

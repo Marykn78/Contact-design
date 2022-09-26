@@ -1,3 +1,4 @@
+import './Delete.style.css'
 const Delete = ({dismessage,setdisMessage,userid,users,setusers}) => {
   const deleteHandler = () => {
     setusers(users.filter((item) => item.id !== userid));
@@ -8,10 +9,10 @@ const Delete = ({dismessage,setdisMessage,userid,users,setusers}) => {
   };
   return (
     <div>
-      <div style={{ display: dismessage }}>
+      <div className='deletemess' style={{ display: dismessage }}>
         <p>are you sure to delete?</p>
-        <button onClick={deleteHandler}>yes</button>
-        <button onClick={notshowmessage}>No</button>
+        <button className='button' onClick={deleteHandler}>yes</button>
+        <button className='button' onClick={notshowmessage}>No</button>
       </div>
     </div>
   );
