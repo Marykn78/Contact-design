@@ -19,6 +19,8 @@ const Table = ({ users, setusers }) => {
   });
   const [mode, setMode] = useState("save");
   const [filter, setFilter] = useState("all");
+  const [items, setitem] = useState([]);
+
 
   const checklikeHandler = (id) => {
     setusers(
@@ -42,7 +44,6 @@ const Table = ({ users, setusers }) => {
   // const notshowform =()=>{
   //     setshowform('none')
   // }
-  const [items, setitem] = useState([]);
   const tablerow =[{id:2,name:'id'},{id:1,name:'name'},{id:3,name:'email'},{id:1,name:'phone'},{id:1,name:'age'}]
 
   const [showform, setshowform] = useState("none");
@@ -58,8 +59,8 @@ const Table = ({ users, setusers }) => {
       />
       <Avatarimg setshowform={setshowform} />
       <Form
-        items={items}
-        setitem={setitem}
+        // items={items}
+        // setitem={setitem}
         users={users}
         setusers={setusers}
         mode={mode}
@@ -75,7 +76,7 @@ const Table = ({ users, setusers }) => {
         filter={filter}
         setFilter={setFilter}
         users={users}
-        items={items}
+        // items={items}
         setusers={setusers}
       />
 
@@ -94,7 +95,7 @@ const Table = ({ users, setusers }) => {
             </tr>
           </thead>
 
-          {users
+          {items
             .filter((item) =>
               item.name.toUpperCase().includes(search.toUpperCase())
             )
