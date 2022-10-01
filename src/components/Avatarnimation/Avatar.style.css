@@ -24,3 +24,14 @@
 .add{
     margin-right:50px;
 }
+@media screen and (max-width:600px) {
+    .avatar-display{
+        /* width: 94%; */
+        background-color: rgba(172, 172, 201, 0.675);
+    }
+    .avatar-list{
+        width:40%;
+        display: grid;
+        grid-template-columns: repeat(3 , 2rem);
+    }
+}

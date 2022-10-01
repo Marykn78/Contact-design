@@ -27,11 +27,11 @@ const FilterItem = ({ filter, users, setFilter, setitem }) => {
   };
 
   return (
-    <div>
+    <>
       <div className="filter-container">
         {filterdata.map((item) => (
           <button
-            className="button"
+            className="filter-btn"
             onClick={() => filterHandler(item.title)}
             style={{ background: item.title === filter ? "#90728b" : "#ddd" }}
           >
@@ -39,7 +39,7 @@ const FilterItem = ({ filter, users, setFilter, setitem }) => {
           </button>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

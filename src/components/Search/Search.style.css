@@ -1,7 +1,7 @@
 .search-container{
     position: relative;
     left: 210px;
-    top:40px;
+    top:28px;
     width:80%;
 }
 
@@ -14,7 +14,11 @@
 }
 
 @media screen and (max-width: 650px) {
-    .search-input {
-      width:auto;
+    .search-container {
+      width:40%;
+      left:160px;
+    }
+    .search-input{
+      width:100%;
     }
   }

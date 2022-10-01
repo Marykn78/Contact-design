@@ -8,7 +8,7 @@ const Search =({search,setSearch})=>{
     return(
         <div>
             <div className='search-container'>
-                <input className='search-input' onChange={searchHandler} value={search} placeholder={'Type here to search'} />
+                <input className='search-input' onChange={searchHandler} value={search} placeholder={'search ...'} />
             </div>
         </div>
     )

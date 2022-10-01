@@ -1,5 +1,7 @@
-input[type="text"] ,input[type="email"],input[type="number"] {
-  width:250px;
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+  width: 450px;
   padding: 12px;
   display: flex;
   border-radius: 8px;
@@ -7,24 +9,29 @@ input[type="text"] ,input[type="email"],input[type="number"] {
 }
 
 .input-row {
-    width:50%;
-    margin:5px;
-    padding-left:10px;
-    display: flex;
-    align-items:center;
+  width: 100%;
+  margin: 5px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
 }
-.form-image{
-  width:50%;
-  height:20%;
+.form-image {
+  width: 50%;
+  height: 20%;
 }
-.formimgcontainer{
+.formimgcontainer {
   position: relative;
   left: 350px;
-  bottom:240px;
+  bottom: 240px;
 }
 @media screen and (max-width: 600px) {
-    input[type="text"],input[type="email"],input[type="number"] {
-      width: 50%;
-      margin-top: 0;
-    }
+  input[type="text"],
+  input[type="email"],
+  input[type="number"] {
+    width: 200px;
+    margin-top: 0;
   }
+  .input-row{
+    width:100%;
+  }
+}
