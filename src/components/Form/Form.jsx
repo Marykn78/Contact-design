@@ -1,5 +1,5 @@
 import './Form.style.css' 
-import image from './image/image.webp'
+// import image from './image/image.webp'
 
 const Form = ({ mode, setMode, form, setForm,users,setusers,showform,setshowform}) => {
 

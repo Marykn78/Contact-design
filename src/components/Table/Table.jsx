@@ -6,7 +6,34 @@ import Search from "../Search/Search";
 import './Table.style.css'
 import Avatarimg from "../Avatarnimation/Avatar";
 
-const Table = ({ users, setusers }) => {
+const Table = () => {
+
+  const [users, setusers] = useState([
+    {
+      id: 1,
+      name: "mina",
+      email: "mina@gmail.com",
+      phone: "308271",
+      age: 24,
+      favorit: true,
+    },
+    {
+      id: 2,
+      name: "saeid",
+      email: "saeid@gmail.com",
+      phone: "564390",
+      age: 32,
+      favorit: false,
+    },
+    {
+      id: 3,
+      name: "paniz",
+      email: "paniz@gmail.com",
+      phone: "823174",
+      age: 18,
+      favorit: true,
+    },
+  ]);
   const [userid, setUserid] = useState(null);
   const [dismessage, setdisMessage] = useState("none");
   const [search, setSearch] = useState("");
