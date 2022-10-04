@@ -13,7 +13,7 @@ const Avatarimg = () => {
       </div>
       <div className="add">
         <Link to={"/newcontact"}>
-          <button className="button" >
+          <button className="button">
             <iconify-icon icon="akar-icons:plus" width="28"></iconify-icon>
           </button>
         </Link>
@@ -22,5 +22,3 @@ const Avatarimg = () => {
   );
 };
 export default Avatarimg;
-
-// onClick={showformHandler}
