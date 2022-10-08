@@ -1,31 +1,20 @@
-import "../AddContact/Form.style.css";
-import formimage from "../AddContact/image/image.webp";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-
-const Form = ({ form, setForm, users, setusers, inputs }) => {
-  const navigate = useNavigate();
-  const inputHandler = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-  const addItem = (e) => {
-    e.preventDefault();
-    setusers([
-      ...users,
-      {
-        id: Math.floor(Math.random() * 1000),
-        ...form,
-        favorit: false,
-      },
-    ]);
-    setForm({ name: "", email: "", phone: "", age: "" });
-    navigate("/");
-  };
-
+import {useNavigate} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+const UpdateContact = ({ inputs,users,setUsers,form,setForm }) => {
+    const updatenavigate =useNavigate()
+    const inputHandler = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+    const updateInput = (e)=>{
+        e.preventDefault()
+        setUsers(users.map(item=>item.id === form.id ? form :item))
+        setForm({ name: "", email: "", phone: "", age: "" });
+        updatenavigate('/')
+    }
   return (
     <div className="container">
       <div className="form-container">
-        <form className="form" action="" onSubmit={addItem}>
+        <form className="form" action="" onSubmit={updateInput}>
           {inputs.map((item) => (
             <div className="input-row">
               <input
@@ -40,7 +29,7 @@ const Form = ({ form, setForm, users, setusers, inputs }) => {
           ))}
           <div className="submit-container">
             <button className="submit-btn" type="submit">
-              save
+              update
             </button>
             <Link to={'/'}>
               <button className="submit-btn">
@@ -50,11 +39,11 @@ const Form = ({ form, setForm, users, setusers, inputs }) => {
           </div>
         </form>
       </div>
-      <div className="formimgcontainer">
+      {/* <div className="formimgcontainer">
         <img className="form-image" src={formimage} alt="form" />
-      </div>
+      </div> */}
     </div>
   );
 };
 
-export default Form;
+export default UpdateContact;

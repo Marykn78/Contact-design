@@ -1,7 +1,13 @@
 import "./Cardinfo.style.css";
+import { Link } from "react-router-dom";
 const Cardinfo = ({ infoUser }) => {
   return (
     <div className="card-container">
+      <div className="back_card">
+        <Link to={"/"}>
+          <iconify-icon icon="bx:arrow-back" width="32" style={{color:'black'}}></iconify-icon>
+        </Link>{" "}
+      </div>
       <div className="card-items">
         <div className="card-image">
           <img

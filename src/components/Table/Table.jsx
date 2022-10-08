@@ -1,19 +1,19 @@
 import { useState } from "react";
 import Delete from "../DeleteMessage/Delete";
 import FilterItem from "../FilterItem/Filteritem";
-// import Form from "../Form/Form";
 import Search from "../Search/Search";
 import './Table.style.css'
 import Avatarimg from "../Avatarnimation/Avatar";
 import { Link } from "react-router-dom";
 
+const tablerow =[{id:1,name:'id'},{id:2,name:'name'},{id:3,name:'email'},{id:4,name:'phone'},{id:5,name:'age'}]
+const tablehead =[{name:'profile'},{name:'id'},{name:'name'},{name:'email'},{name:'phone'},{name:'age'},{name:'like'},{name:''}]
 const Table = ({users,setusers,setForm,setMode}) => {
   const [userid, setUserid] = useState(null);
   const [dismessage, setdisMessage] = useState("none");
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   const [items, setitem] = useState([]);
-
 
   const checklikeHandler = (id) => {
     setusers(
@@ -31,7 +31,6 @@ const Table = ({users,setusers,setForm,setMode}) => {
     setMode("update");
   };
 
-  const tablerow =[{id:1,name:'id'},{id:2,name:'name'},{id:3,name:'email'},{id:4,name:'phone'},{id:5,name:'age'}]
 
   // const [showform, setshowform] = useState("none");
 
@@ -58,17 +57,9 @@ const Table = ({users,setusers,setForm,setMode}) => {
         <table className='table' >
           <thead>
             <tr>
-              <th>profile</th>
-              <th>id</th>
-              <th>name</th>
-              <th>email</th>
-              <th>phone</th>
-              <th>age</th>
-              <th>like</th>
-              <th></th>
+              {tablehead.map(th=>(<th>{th.name}</th>))}
             </tr>
           </thead>
-
           {items
             .filter((item) =>
               item.name.toUpperCase().includes(search.toUpperCase())
@@ -85,7 +76,7 @@ const Table = ({users,setusers,setForm,setMode}) => {
                     </td>
                     <td>
                       <button className="button" onClick={() => showmessage(user.id)}><iconify-icon icon="fluent:delete-12-regular" width="22"></iconify-icon></button>
-                      <button className="button" onClick={() => updateHandler(user)}><iconify-icon icon="fa-regular:edit" width="24"></iconify-icon></button>
+                      <Link to={`/update`}><button className="button" onClick={() => updateHandler(user)}><iconify-icon icon="fa-regular:edit" width="24"></iconify-icon></button></Link>
                       <Link to={`/info/${user.id}`}><button className="button"><iconify-icon icon="akar-icons:info" width="22"></iconify-icon></button></Link>
                     </td>
                 </tr>

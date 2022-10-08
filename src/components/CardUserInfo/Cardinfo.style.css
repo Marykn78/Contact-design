@@ -35,7 +35,6 @@
   
 }
 .card-userinfo {
-  background-color: aqua;
   width: 70%;
   height: 30px;
   text-align: center;
@@ -53,13 +52,17 @@
     width:50%;
     background: radial-gradient(#fbc1cc, #fa99b2);
 }
-
+.back_card{
+  background-color: #89bafb;
+  border-radius: 10px;
+}
 @media screen and (max-width: 650px) {
   .card-container {
     width: 100%;
     align-items: center;
   }
   .card-items {
-    font-size: 16pxx;
+    width: 90%;
+    font-size: 16px;
   }
 }

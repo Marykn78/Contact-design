@@ -37,6 +37,7 @@ button{
   margin-bottom:10px;
   display: flex;
   align-items: center;
+  margin:5px;
 }
 .submit-btn{
   border-radius:15px;
